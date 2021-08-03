@@ -58,7 +58,7 @@ RandomKidnap::timerCallback(const ros::TimerEvent& e){
         geometry_msgs::PoseWithCovarianceStamped kidnap_pose;
 
         double length = 2*((double)rand()/RAND_MAX - 0.5)*kidnap_length_;
-		double direction = 2*((double)rand()/RAND_MAX - 0.5)*M_PI;
+        double direction = 2*((double)rand()/RAND_MAX - 0.5)*M_PI;
 
         kidnap_pose.header.frame_id = map_frame_;
         kidnap_pose.header.stamp = ros::Time(0);
@@ -67,11 +67,11 @@ RandomKidnap::timerCallback(const ros::TimerEvent& e){
         kidnap_pose.pose.pose.position.z = 0;
 
         tf2::Quaternion q;
-		q.setRPY(0, 0, direction);
-		tf2::convert(q, kidnap_pose.pose.pose.orientation);
+        q.setRPY(0, 0, direction);
+        tf2::convert(q, kidnap_pose.pose.pose.orientation);
 
         kidnap_pose.pose.covariance[0] = kidnap_pose.pose.covariance[7] = 0.25;
-		kidnap_pose.pose.covariance[35] = 0.7;
+        kidnap_pose.pose.covariance[35] = 0.7;
 
         pub_.publish(kidnap_pose);
         ROS_INFO("publish kidnap_pose");
