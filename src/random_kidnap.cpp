@@ -20,7 +20,6 @@ class RandomKidnap{
 		std::string base_frame_;
 
         double kidnap_length_;
-        double kidnap_direction_;
 
         double timer_duration_, examine_duration_;
         int count_;
@@ -33,7 +32,6 @@ class RandomKidnap{
             pnh_.param<double>("timer_duration", timer_duration_, 0.1);
             pnh_.param<double>("examine_duration", examine_duration_, 10.0);
             pnh_.param<double>("kidnap_length", kidnap_length_, 50.0);
-            pnh_.param<double>("kidnap_direction", kidnap_direction_, 3.141592);
 
             timer_ = nh_.createTimer(ros::Duration(timer_duration_),&RandomKidnap::timerCallback,this);
             pub_ = nh_.advertise<geometry_msgs::PoseWithCovarianceStamped> ("initialpose",1000);
@@ -60,7 +58,7 @@ RandomKidnap::timerCallback(const ros::TimerEvent& e){
         geometry_msgs::PoseWithCovarianceStamped kidnap_pose;
 
         double length = 2*((double)rand()/RAND_MAX - 0.5)*kidnap_length_;
-		double direction = 2*((double)rand()/RAND_MAX - 0.5)*kidnap_direction_;
+		double direction = 2*((double)rand()/RAND_MAX - 0.5)*M_PI;
 
         kidnap_pose.header.frame_id = map_frame_;
         kidnap_pose.header.stamp = ros::Time(0);
