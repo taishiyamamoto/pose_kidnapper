@@ -17,7 +17,7 @@ class RandomKidnap{
         tf2_ros::TransformListener tfListener_;
 
         std::string map_frame_;
-		std::string base_frame_;
+        std::string base_frame_;
 
         double kidnap_length_;
 
@@ -82,7 +82,7 @@ RandomKidnap::timerCallback(const ros::TimerEvent& e){
 int main(int argc, char **argv){
     ros::init(argc, argv, "random_kidnap");
     RandomKidnap rk;
-	ros::spin();
+    ros::spin();
 
     return 0;
 }
