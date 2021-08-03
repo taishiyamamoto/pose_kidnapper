@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<launch>
+    <node pkg="pose_kidnapper" type="random_kidnap" name="random_kidnap" output="screen">
+        <rosparam file="$(find pose_kidnapper)/config/param.yaml" command="load" />
+    </node>
+</launch>

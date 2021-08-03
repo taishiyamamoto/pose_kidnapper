@@ -1,0 +1,6 @@
+map_frame: map
+base_frame: base_link
+timer_duration: 0.1
+examine_duration: 60.0
+kidnap_length: 50
+kidnap_direction: 3.141592
